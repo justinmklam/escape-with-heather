@@ -1,9 +1,25 @@
+let questions = [];  // Will hold the selected team's questions
 let currentQuestion = getQuestionFromURL() || 0;
 
+function selectTeam(team) {
+    // Update the URL to include the selected team
+    let newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + `?team=${team}`;
+    window.location.href = newURL;  // Navigate to the updated URL
+}
+
 function startGame() {
+    let team = getTeamFromURL();
+
+    if(!team) {
+      // Stay on start page if no team is selected
+      return;
+    }
+    // Load questions for the appropriate team
+    questions = eval(team)
+
     document.getElementById('start-page').style.display = 'none';  // Hide the start page
     document.getElementById('question-page').style.display = 'block';  // Show the questions
-    loadQuestion();  // Load the first question
+    loadQuestion();
 }
 
 function checkAnswer() {
@@ -47,7 +63,8 @@ function loadQuestion() {
 }
 
 function updateURL(questionIndex) {
-    let newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + `?question=${questionIndex}`;
+    let team = getTeamFromURL();
+    let newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + `?team=${team}&question=${questionIndex}`;
     window.history.pushState({ path: newURL }, '', newURL);  // Update the URL without reloading
 }
 
@@ -56,10 +73,13 @@ function getQuestionFromURL() {
     return params.has('question') ? parseInt(params.get('question')) : null;
 }
 
+function getTeamFromURL() {
+    let params = new URLSearchParams(window.location.search);
+    return params.get('team');  // Return the team from the URL
+}
+
 // Ensure the correct question loads if the page is refreshed or URL is shared
 window.onload = function() {
-    if (currentQuestion !== 0) {
-        startGame();  // Start directly if on a question page
-    }
+    startGame();
 };
 

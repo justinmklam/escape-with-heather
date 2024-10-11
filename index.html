@@ -11,7 +11,10 @@
         <!-- Start page -->
         <div id="start-page">
             <h2>Welcome to the Escape Room!</h2>
-            <button onclick="startGame()">Start</button>
+            <!-- <button onclick="startGame()">Start</button> -->
+            <p>Select your team to begin:</p>
+            <button onclick="selectTeam('team1')">Team 1</button>
+            <button onclick="selectTeam('team2')">Team 2</button>
         </div>
         
         <!-- Game content hidden until start -->
@@ -24,8 +27,9 @@
         </div>
     </div>
 
-    <script src="questions.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/questions/team1.js"></script>
+    <script src="js/questions/team2.js"></script>
 </body>
 </html>
 
