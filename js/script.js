@@ -41,7 +41,7 @@ function checkAnswer() {
       document.getElementById('question').innerText = "Congratulations! You've completed the escape room!";
       document.getElementById('answer').style.display = 'none';
       document.getElementById('message').style.display = 'none';
-      document.querySelector('button').style.display = 'none';
+      document.getElementById('btn-submit').style.display = 'none';
       document.getElementById('game-image').style.display = 'none';  // Hide the image
     }
   } else {
