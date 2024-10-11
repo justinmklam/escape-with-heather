@@ -1,6 +1,8 @@
 let questions = [];  // Will hold the selected team's questions
 let currentQuestion = getQuestionFromURL() || 0;
 
+const jsConfetti = new JSConfetti();
+
 function selectTeam(team) {
     // Update the URL to include the selected team
     let newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + `?team=${team}`;
@@ -27,10 +29,14 @@ function checkAnswer() {
     let correctAnswer = questions[currentQuestion].answer.toLowerCase();
     
     if (userAnswer === correctAnswer) {
+        jsConfetti.addConfetti();
         currentQuestion++;
         if (currentQuestion < questions.length) {
             updateURL(currentQuestion);  // Update the URL
-            loadQuestion();
+            // Wait a bit for the confetti to animate before showing the next question
+            setTimeout(function() {
+              loadQuestion();
+            }, 1000);
         } else {
             document.getElementById('question').innerText = "Congratulations! You've completed the escape room!";
             document.getElementById('answer').style.display = 'none';
