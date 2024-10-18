@@ -11,13 +11,14 @@ function selectTeam(team) {
 
 function startGame() {
   let team = getTeamFromURL();
+  let questionprefix = getQuestionPrefixFromURL();
 
   if (!team) {
     // Stay on start page if no team is selected
     return;
   }
   // Load questions for the appropriate team
-  questions = eval(team)
+  questions = eval(questionprefix + "_" + team)
 
   document.getElementById('start-page').style.display = 'none';  // Hide the start page
   document.getElementById('question-page').style.display = 'block';  // Show the questions
@@ -27,6 +28,7 @@ function startGame() {
 function checkAnswer() {
   let userAnswer = document.getElementById('answer').value.trim().toLowerCase();
   let correctAnswer = questions[currentQuestion].answer.toLowerCase();
+  let message = questions[currentQuestion].message;
 
   if (userAnswer === correctAnswer) {
     jsConfetti.addConfetti();
@@ -38,7 +40,7 @@ function checkAnswer() {
         loadQuestion();
       }, 1000);
     } else {
-      document.getElementById('question').innerText = "Congratulations! You've completed the escape room!";
+      document.getElementById('question').innerText = message;
       document.getElementById('answer').style.display = 'none';
       document.getElementById('message').style.display = 'none';
       document.getElementById('btn-submit').style.display = 'none';
@@ -84,6 +86,10 @@ function getTeamFromURL() {
   return params.get('team');  // Return the team from the URL
 }
 
+function getQuestionPrefixFromURL() {
+  let params = new URLSearchParams(window.location.search);
+  return params.get('questionprefix');  // Return the team from the URL
+}
 // Ensure the correct question loads if the page is refreshed or URL is shared
 window.onload = function () {
   startGame();
