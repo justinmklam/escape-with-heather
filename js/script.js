@@ -82,7 +82,12 @@ function loadQuestion() {
   let currentData = questions[currentQuestion];
 
   // Load the question text
-  document.getElementById('question').innerText = currentData.question;
+  if (currentData.question.indexOf('<') > -1) {
+    document.getElementById('question').innerHTML = currentData.question;
+  }
+  else {
+    document.getElementById('question').innerText = currentData.question;
+  }
 
   // Clear the input field and message
   document.getElementById('answer').value = '';
