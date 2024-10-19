@@ -18,7 +18,16 @@ function startGame() {
     return;
   }
   // Load questions for the appropriate team
-  questions = eval(questionprefix + "_" + team)
+
+  let questionVarName = "";
+  if (questionprefix.indexOf('_') > -1) {
+    questionVarName = questionprefix;
+  }
+  else {
+    questionVarName = questionprefix + "_" + team;
+  }
+  console.log(questionVarName);
+  questions = eval(questionVarName);
 
   document.getElementById('start-page').style.display = 'none';  // Hide the start page
   document.getElementById('question-page').style.display = 'block';  // Show the questions
@@ -26,21 +35,25 @@ function startGame() {
 }
 
 function checkAnswer() {
+  let team = getTeamFromURL();
   let userAnswer = document.getElementById('answer').value.trim().toLowerCase();
   let correctAnswer = questions[currentQuestion].answer.toLowerCase();
   let message = questions[currentQuestion].message;
+  if (message instanceof Object) {
+    message = message[team];
+  }
 
   if (userAnswer === correctAnswer) {
     jsConfetti.addConfetti();
     currentQuestion++;
     if (currentQuestion < questions.length) {
-      updateURL(currentQuestion);  // Update the URL
+      // updateURL(currentQuestion);  // Update the URL
       // Wait a bit for the confetti to animate before showing the next question
       setTimeout(function () {
         loadQuestion();
       }, 1000);
     } else {
-      document.getElementById('question').innerText = message;
+      document.getElementById('question').innerHTML = message;
       document.getElementById('answer').style.display = 'none';
       document.getElementById('message').style.display = 'none';
       document.getElementById('btn-submit').style.display = 'none';
