@@ -12,6 +12,11 @@ function selectTeam(team) {
 function startGame() {
   let team = getTeamFromURL();
   let questionprefix = getQuestionPrefixFromURL();
+  // Get the pathname
+  const path = window.location.pathname;
+
+  // Extract the filename (e.g., orders.html)
+  const filename = path.substring(path.lastIndexOf('/') + 1);
 
   if (!team) {
     // Stay on start page if no team is selected
@@ -19,14 +24,23 @@ function startGame() {
   }
   // Load questions for the appropriate team
 
+  console.log(filename)
   let questionVarName = "";
-  if (questionprefix.indexOf('_') > -1) {
-    questionVarName = questionprefix;
+  // Do this because I printed the QR code before changing it to use index.html for all questions
+  if (filename == "order.html") {
+    questionVarName = "orders_" + team;
   }
   else {
-    questionVarName = questionprefix + "_" + team;
+    // If underscore is in the name, use that as the variable name
+    if (questionprefix.indexOf('_') > -1) {
+      questionVarName = questionprefix;
+    }
+    else {
+      questionVarName = questionprefix + "_" + team;
+    }
   }
-  console.log(questionVarName);
+  
+  console.log("Question Prefix: " + questionVarName);
   questions = eval(questionVarName);
 
   document.getElementById('start-page').style.display = 'none';  // Hide the start page
