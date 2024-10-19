@@ -27,6 +27,19 @@ body {
   border: 1px solid #ccc;
 }
 
+
+#togglePassword {
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#togglePassword:hover {
+  background-color: #005bb5;
+}
+
 button {
   padding: 10px 20px;
   background-color: #0078e7;
