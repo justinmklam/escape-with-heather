@@ -39,9 +39,9 @@ const durians_all = [
       "d) XO\n",
     answer: "b",
     message: {
-      team1: "Thanks for playing! Find your promo code by the D888 durian!",
-      team2: "Congrats D200",
-      team3: "Congrats D233",
+      team1: "Thanks for playing! Find your promo code behind D163!",
+      team2: "Thanks for playing! Find your promo code behind D198!",
+      team3: "Thanks for playing! Find your promo code behind D200!",
     }
   },
 ];
