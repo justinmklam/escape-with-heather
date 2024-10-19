@@ -7,7 +7,7 @@ const climbs_team1 = [
       "Finished Product\n" + // p.217, v9
       "Alpine Feel\n", // p.57, v0
     answer: "14",
-    message: "Congrats!"
+    message: "Congrats! Get ready to BEND and see Justin for your next challenge!"
   },
 ];
 
@@ -20,7 +20,7 @@ const climbs_team2 = [
       "Finished Product\n" + // p.217, v9
       "Wing Night\n", // p.306, v0
     answer: "19",
-    message: "Congrats!"
+    message: "Congrats! Get ready to BEND and see Justin for your next challenge!"
   },
 ];
 
@@ -33,6 +33,6 @@ const climbs_team3 = [
       "Sushi Special\n" + // p.540, v12
       "Grounders\n", // p.440, v0
     answer: "20",
-    message: "Congrats!"
+    message: "Congrats! Get ready to BEND and see Justin for your next challenge!"
   },
 ];

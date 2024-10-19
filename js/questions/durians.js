@@ -8,14 +8,6 @@ const durians_all = [
     answer: "a",
   },
   {
-    question: "Which variety of durian is considered one of the most popular and prized in Malaysia?\n\n" +
-      "a) D24\n" +
-      "b) Musang King\n" +
-      "c) Red Prawn\n" +
-      "d) XO\n",
-    answer: "b",
-  },
-  {
     question: "In Singapore, where is durian often banned due to its strong odor?\n\n" +
       "a) Airports\n" +
       "b) Restaurants\n" +
@@ -37,6 +29,14 @@ const durians_all = [
       "b) Summer\n" +
       "c) Winter\n" +
       "d) Fall\n",
+    answer: "b",
+  },
+  {
+    question: "Get a sample from Justin! What type of durian is it?\n\n" +
+      "a) D24\n" +
+      "b) Musang King\n" +
+      "c) Red Prawn\n" +
+      "d) XO\n",
     answer: "b",
     message: {
       team1: "Thanks for playing! Find your promo code by the D888 durian!",
